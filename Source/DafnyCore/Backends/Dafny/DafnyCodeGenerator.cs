@@ -415,7 +415,7 @@ namespace Microsoft.Dafny.Compilers {
         throw new InvalidOperationException();
       }
 
-      var erasedType = EraseNewtypeLayers(sst);
+      var erasedType = sst.Rhs.NormalizeExpand();
 
       List<DAST.Statement> witnessStmts = new();
       DAST.Expression witness = null;
@@ -1649,7 +1649,7 @@ namespace Microsoft.Dafny.Compilers {
           GenType(EraseNewtypeLayers(topLevel)), range, true);
       } else if (topLevel is TypeSynonymDecl typeSynonym) { // Also SubsetTypeDecl
         resolvedTypeBase = (DAST.ResolvedTypeBase)DAST.ResolvedTypeBase.create_Newtype(
-          GenType(EraseNewtypeLayers(topLevel)), NewtypeRange.create_NoRange(), true);
+          GenType(typeSynonym.Rhs.NormalizeExpand()), NewtypeRange.create_NoRange(), true);
       } else if (topLevel is TraitDecl) {
         resolvedTypeBase = (DAST.ResolvedTypeBase)DAST.ResolvedTypeBase.create_Trait();
       } else if (topLevel is DatatypeDecl) {
