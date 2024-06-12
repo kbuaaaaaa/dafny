@@ -7,7 +7,7 @@ jobs:
       - name: Build Fuzzer
         uses: actions/github-script@v7
         with:
-            github-token: ${{ secrets.COMPFUZZY_PAT }}
+            github-token: ${{ secrets.COMPFUZZCI_PAT }}
             script: |
               await github.rest.actions.createWorkflowDispatch({
                   owner: 'kbuaaaaaa',
@@ -22,7 +22,7 @@ jobs:
       - name: Run Fuzzer
         uses: actions/github-script@v7
         with:
-            github-token: ${{ secrets.COMPFUZZY_PAT }}
+            github-token: ${{ secrets.COMPFUZZCI_PAT }}
             script: |
               await github.rest.actions.createWorkflowDispatch({
                   owner: 'kbuaaaaaa',
