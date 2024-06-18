@@ -1,0 +1,22 @@
+name: CompFuzzy
+on: [push, workflow_dispatch]
+jobs:
+  Fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger CompFuzzCI
+        uses: actions/github-script@v7
+        with:
+            github-token: ${{ secrets.COMPFUZZCI_PAT }}
+            script: |
+              await github.rest.actions.createWorkflowDispatch({
+                  owner: 'kbuaaaaaa',
+                  repo: 'CompFuzzCI',
+                  workflow_id: 'fuzz.yaml',
+                  ref: 'main',
+                  inputs: {
+                      trigger: 'push',
+                      head_commit: '${{github.event.head_commit.id}}',
+                      previous_commit: '${{github.event.before}}'
+                  }
+              })
