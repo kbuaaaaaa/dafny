@@ -1,5 +1,5 @@
 name: CompFuzzy
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   Fuzz:
     runs-on: ubuntu-latest
@@ -15,8 +15,8 @@ jobs:
                   workflow_id: 'fuzz.yaml',
                   ref: 'main',
                   inputs: {
-                      trigger: 'push',
-                      head_commit: '${{github.event.head_commit.id}}',
-                      previous_commit: '${{github.event.before}}'
+                      commit: '${{github.event.head_commit.id}}',
+                      commit_before: '${{github.event.before}}',
+                      duration:120
                   }
               })
