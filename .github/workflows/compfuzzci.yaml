@@ -18,6 +18,6 @@ jobs:
                       commit: '${{github.event.head_commit.id}}',
                       commit_before: '${{github.event.before}}',
                       duration: '120'
-                      instances: '4'
+                      instance: '4'
                   }
               })
