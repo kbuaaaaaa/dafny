@@ -17,7 +17,7 @@ jobs:
                   inputs: {
                       commit: '${{github.event.head_commit.id}}',
                       commit_before: '${{github.event.before}}',
-                      duration: '120'
+                      duration: '120',
                       instance: '4'
                   }
               })
