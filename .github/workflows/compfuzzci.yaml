@@ -13,7 +13,7 @@ jobs:
                   owner: 'kbuaaaaaa',
                   repo: 'CompFuzzCI',
                   workflow_id: 'fuzz.yaml',
-                  ref: 'main',
+                  ref: 'ECS',
                   inputs: {
                       commit: '${{github.event.head_commit.id}}',
                       commit_before: '${{github.event.before}}',
